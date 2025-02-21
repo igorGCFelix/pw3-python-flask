@@ -1,19 +1,28 @@
 # comentario em python #
 # Importando o pacote do Flask
-from flask import Flask
+from flask import Flask, render_template
 
 # Carregando o Flask na variável app
-app = Flask(__name__)
+# template_folder diz onde estará a a pasta páginas html
+# render_template biblioteca para renderizar a página
+app = Flask(__name__, template_folder='views')
 
 # Criando a rota principal do site
-@app.route('/games')
-
+@app.route('/')
 #Criando a função no Python
+# View function - Função de visualização
 def home():
-    return '<h1>Meu primeiro site em Flask. Seja bem-vindo!</h1>'
+    return render_template('index.html')
 
+@app.route('/games')
 def games():
-    return '<h1>Seja bem-vindo a página de games!</h1>'
+    titulo = 'CS-GO'
+    ano = 2012
+    categoria = 'FPS Online'
+    jogadores = ['iruah', 'davi_lambari', 'edsongf' , 'kioto' , 'black.butterfly','jujudopix']
+    outrosJogos = ['Elden Ring', 'Subnautica' , 'Rainbow Six Siege' , 'Rocket League', 'Cuphead', 'Hollow Knight', 'Red Dead Redemption 2']
+    return render_template('games.html', titulo=titulo, ano=ano, categoria=categoria, jogadores=jogadores, outrosJogos=outrosJogos)
+# titulo = titulo, pega o titulo do python e declara no html
 
 
 # Rodando o servidor no localhost, porta 5000
