@@ -31,6 +31,13 @@
         {% endfor %}
     </ol>
     <hr>
+    <h4>Entrar no jogo:</h4>
+    <form action="{{url_for('games')}}", method="POST">
+        <label for="jogador">Jogador:</label>
+        <input type="text" name="jogador">
+        <input type="submit" value="Entrar">
+    </form>
+    <br><hr>
     <!-- Criar uma seção para exibir uma lista de outros games sendo jogados no momento. A lista deve possuir 7 games e ser não ordenada. -->
      <p>Outros games sendo jogados:</p>
      <ol>
