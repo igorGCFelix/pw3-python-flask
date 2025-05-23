@@ -8,24 +8,31 @@ from flask import Flask, render_template
 app = Flask(__name__, template_folder='views')
 
 # Criando a rota principal do site
+
+
 @app.route('/')
-#Criando a função no Python
+# Criando a função no Python
 # View function - Função de visualização
 def home():
     return render_template('index.html')
 
+
 @app.route('/games')
 def games():
-    titulo = 'CS-GO'
-    ano = 2012
-    categoria = 'FPS Online'
-    jogadores = ['iruah', 'davi_lambari', 'edsongf' , 'kioto' , 'black.butterfly','jujudopix']
-    outrosJogos = ['Elden Ring', 'Subnautica' , 'Rainbow Six Siege' , 'Rocket League', 'Cuphead', 'Hollow Knight', 'Red Dead Redemption 2']
-    return render_template('games.html', titulo=titulo, ano=ano, categoria=categoria, jogadores=jogadores, outrosJogos=outrosJogos)
+    game = {
+        'Título': 'CS-GO',
+        'Ano': 2012,
+        'Categoria': 'FPS Online'
+    }
+
+    jogadores = ['iruah', 'davi_lambari', 'edsongf',
+                 'kioto', 'black.butterfly', 'jujudopix']
+    outrosJogos = ['Elden Ring', 'Subnautica', 'Rainbow Six Siege',
+                   'Rocket League', 'Cuphead', 'Hollow Knight', 'Red Dead Redemption 2']
+    return render_template('games.html', game=game, jogadores=jogadores, outrosJogos=outrosJogos)
 # titulo = titulo, pega o titulo do python e declara no html
 
 
 # Rodando o servidor no localhost, porta 5000
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug=True)
-    

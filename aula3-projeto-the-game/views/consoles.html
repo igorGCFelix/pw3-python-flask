@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Consoles</title>
+</head>
+<body>
+    <form action="{{url_for('consoles')}}", method="POST">
+        <h2>Preencha o cadastro do console</h2>
+
+        <label>Nome</label>
+        <input type="text" name="nome" required>
+
+        <label>Preço</label>
+        <input type="number" name="preco" required>
+
+        <label>País em que foi feito</label>
+        <input type="text" name="pais" required>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <br>
+    <hr>
+    <h4>Consoles Cadastrados</h4>
+    {%  %}
+</body>
+</html>
