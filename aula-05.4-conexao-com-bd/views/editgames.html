@@ -1,18 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="col-md-6 m-auto">
-    <h3 style="text-align: center;">Editar Jogo:</h3>
-    <form action="/edit/{{game.id}}" method="POST">
-        <input type="text" name="titulo" value="{{game.titulo}}" class="form-control" required>
-        <input type="date" name="ano" value="{{game.ano}}" min="1970" class="form-control" required>
-        <input type="text" name="categoria" value="{{game.categoria}}" class="form-control" required>
-        <input type="text" name="plataforma" value="{{game.plataforma}}" class="form-control" required>
-        <input type="number" name="preco" value="{{game.preco}}" class="form-control" required>
-        <input type="number" name="quantidade" value="{{game.quantidade}}" class="form-control" required>
-        <a href="{{url_for('edit', id=game.id)}}" onclick="return confirm('Confirma as alterações?')"><input type="submit" value="Alterar" class="btn btn-success">Confirmar</a>
-        <a href="{{url_for('estoque')}}"><input type="button" value="Cancelar" class="btn btn-danger"></a>
-    </form>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Editar Jogo</h3>
+            </div>
+            <div class="card-body">
+                <form action="/edit/{{game.id}}" method="POST">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" id="titulo" name="titulo" value="{{game.titulo}}" class="form-control" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="ano" class="form-label">Ano</label>
+                        <input type="number" id="ano" name="ano" value="{{game.ano}}" min="1970" class="form-control" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoria</label>
+                        <input type="text" id="categoria" name="categoria" value="{{game.categoria}}" class="form-control" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="plataforma" class="form-label">Plataforma</label>
+                        <input type="text" id="plataforma" name="plataforma" value="{{game.plataforma}}" class="form-control" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="preco" class="form-label">Preço</label>
+                        <input type="number" id="preco" name="preco" value="{{game.preco}}" class="form-control" step="0.01" required>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{url_for('estoque')}}" class="btn btn-danger me-md-2">
+                            <i class="fas fa-times me-1"></i>Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-success" onclick="return confirm('Confirma as alterações?')">
+                            <i class="fas fa-save me-1"></i>Salvar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
