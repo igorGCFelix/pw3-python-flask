@@ -14,7 +14,7 @@ app = Flask(__name__, template_folder='views')
 routes.init_app(app)
 
 # Define o nome do banco de dados
-DB_NAME = 'games'
+DB_NAME = 'thegames'
 # Configura o Flask com o banco definido
 app.config['DATABASE_NAME'] = DB_NAME
 
@@ -27,13 +27,13 @@ if __name__ == '__main__':
     connection = pymysql.connect(host='localhost',
                                  user='root',
                                  password='',
-                                 charset='utf8mb4',    
+                                 charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
     # Tentando criar o banco
     # Try, trata o sucesso
     try:
         # with cria um recurso temporariamente
-        with connection.cursor() as cursor: # alias
+        with connection.cursor() as cursor:  # alias
             # Cria o banco de dados (se ele não existir)
             cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
             print(f"O banco de dados {DB_NAME} está criado!")
@@ -42,13 +42,13 @@ if __name__ == '__main__':
         print(f"Erro ao criar o banco de dados: {e}")
     finally:
         connection.close()
-    
+
     # Passando o flask para SQLAlchemy
     db.init_app(app=app)
-    
+
     # Criando as tabelas a partir do model
     with app.test_request_context():
         db.create_all()
-    
-    # Inicializando a aplicação Flask    
+
+    # Inicializando a aplicação Flask
     app.run(host='localhost', port=5000, debug=True)

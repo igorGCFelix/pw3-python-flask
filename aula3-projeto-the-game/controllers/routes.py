@@ -1,5 +1,4 @@
 from flask import render_template, request, redirect, url_for
-from models.database import Game, db
 
 # Lista de jogadores
 jogadores = ['Miguel José', 'Miguel Isack', 'Leaf',
@@ -9,10 +8,6 @@ jogadores = ['Miguel José', 'Miguel Isack', 'Leaf',
 gamelist = [{'Título': 'CS-GO',
             'Ano': 2012,
              'Categoria': 'FPS Online'}]
-
-consolelist = [{'Nome': '',
-                'Preço': '',
-                'País': ''}]
 
 
 def init_app(app):
@@ -49,38 +44,3 @@ def init_app(app):
             return redirect(url_for('cadgames'))
         return render_template('cadgames.html',
                                gamelist=gamelist)
-        
-    @app.route('/consoles', methods=['GET', 'POST'])
-    def consoles():
-        console = consolelist[0]
-        if request.method == 'POST':
-            if request.form.get('nomeConsole') and request.form.get('precoConsole') and request.form.get('paisConsole'):
-                consolelist.append({'Nome': request.form.get('nomeConsole'),
-                                    'Preço': request.form.get('precoConsole'),
-                                    'País': request.form.get('paisConsole')})
-        return render_template('consoles.html', consolelist=consolelist, console=console)
-
-
-    # Rota do CRUD (Estoque de jogos)
-    @app.route('/estoque', methods=['GET','POST'])
-    @app.route('/estoque/<int:id>')
-    def estoque(id=None):
-        # Se o id for passado, então é para excluir o jogo
-        if id:
-            game = Game.query.get(id)
-            # Deleta o jogo do banco
-            db.session.delete(game)
-            db.session.commit()
-            return redirect(url_for('estoque'))
-        
-        if request.method == 'POST':
-            #Cadastrando o jogo no banco de dados:
-            newgame = Game(request.form['titulo'], request.form['ano'], request.form['categoria'], request.form['plataforma'], request.form['preco'])
-            db.session.add (newgame)
-            db.session.commit()
-            return redirect(url_for('estoque'))
-            
-        # ORM que estamos usando é a SQLAlchemy
-        # O método query.all = SELECT * from...
-        gamesEmEstoque = Game.query.all()
-        return render_template('estoque.html', gamesEmEstoque=gamesEmEstoque)
