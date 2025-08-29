@@ -1,0 +1,33 @@
+/* Estilos básicos para a aplicação */
+
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.badge {
+    font-size: 0.8rem;
+    padding: 0.4em 0.6em;
+}
+
+.btn {
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+}
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 15px;
+    }
+}

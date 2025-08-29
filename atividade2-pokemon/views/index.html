@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="mb-4">Bem-vindo à Pokédex do Doutor Felix</h1>
+                <p class="lead mb-4">
+                    Consulte os pokemons catalogados pelo Doutor Felix.
+                </p>
+                <img src="{{url_for('static', filename='imgs/dr_pokemon.webp')}}" alt="Dr. Pokémon" class="img-fluid mb-4" style="max-height: 200px;">
+                <br>
+                <a class="btn btn-primary" href="{{url_for('pokemon')}}" role="button">
+                    Ver Pokémons
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <p class="text-muted">
+        <strong>Atenção:</strong> Essa aplicação pode demorar um pouco para carregar!
+    </p>
+</div>
+{% endblock content %}

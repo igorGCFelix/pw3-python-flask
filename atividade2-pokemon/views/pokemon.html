@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="text-center mb-4">Lista de Pokémons</h1>
+        <p class="text-center text-muted">Clique em "Ver Detalhes" para obter mais informações sobre cada Pokémon</p>
+    </div>
+</div>
+
+<div class="row">
+    {% for pokemon in pokemons %}
+    <div class="col-md-3 col-sm-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" class="img-fluid mb-3" style="max-height: 120px;">
+                <h5 class="card-title">{{ pokemon.name }}</h5>
+                <p class="card-text">
+                    <strong>ID:</strong> #{{ pokemon.id }}<br>
+                    <strong>Tipos:</strong>
+                    {% for type in pokemon.types %}
+                        <span class="badge bg-secondary me-1">{{ type }}</span>
+                    {% endfor %}
+                </p>
+                <a href="{{url_for('pokemon_detail', id=pokemon.id)}}" class="btn btn-primary">
+                    Ver Detalhes
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row mt-4">
+    <div class="col-12 text-center">
+        <a href="{{url_for('home')}}" class="btn btn-outline-secondary">
+            Voltar ao Início
+        </a>
+    </div>
+</div>
+{% endblock content %}
