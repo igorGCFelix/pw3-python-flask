@@ -154,3 +154,8 @@ def init_app(app):
     @app.route('/login', methods=['GET', 'POST'])
     def login():
         return render_template('login.html')
+
+    # Rota de CADASTRO
+    @app.route('/caduser', methods=['GET', 'POST'])
+    def caduser():
+        return render_template('caduser.html')
