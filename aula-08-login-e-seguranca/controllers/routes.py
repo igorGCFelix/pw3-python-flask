@@ -149,3 +149,8 @@ def init_app(app):
                 return f'Game com a ID {id} não foi encontrado.'
         else:
             return render_template('apigames.html', gameList=gameList)
+        
+    # Rota de LOGIN
+    @app.route('/login', methods=['GET', 'POST'])
+    def login():
+        return render_template('login.html')

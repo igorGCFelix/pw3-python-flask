@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="card mt-4">
+        <div class="card-body m-auto">
+            <form action="">
+                <label>Email:</label>
+                <input type="email" name="email" class="form-control mb-3" placeholder="email@exemplo.com" required>
+                <input type="senha" name="senha" class="form-control mb-3" placeholder="Insira sua senha..." required>
+                <button type="submit" class="btn btn-danger btn-block w-100">Entrar</button>
+            </form>
+            <hr>
+            <h6>Não possui conta? <a href="#">Cadastre-se!</a></h6>
+        </div>
+    </div>
+</div>
+{% endblock %}
