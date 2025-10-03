@@ -35,11 +35,18 @@
             </li>
           </ul>
           
+          <!-- Botão de entrar e sair -->
           <span style="margin-left: auto;">
             <ul class="navbar-nav">
+              {% if 'user_id' not in session: %}
               <li class="nav-item">
                 <a class="nav-link" href="{{url_for('login')}}">Entrar</a>
               </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('logout')}}">Sair</a>
+              </li>
+              {% endif %}
             </ul>
           </span>
 
